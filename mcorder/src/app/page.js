@@ -132,7 +132,7 @@
                         backgroundColor:'#4caf50' }}
                 >
 
-                    LOGIN
+                    <a href = "/Customer" style={{ textDecoration: "none", color: "inherit" }}> LOGIN </a> //Link doesn't work on home page it wont let me log back in
                 </Button>
 
                 <div
