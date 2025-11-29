@@ -66,57 +66,163 @@
 
             return (
 
+
                 <Container maxWidth="sm">
 
-                <Box
-                    sx={{ height: '100vh',
-                    display: 'flex',
-                    flexDirection: 'column',
-                    justifyContent: 'center',
-                    alignItems: 'center',
-                    paddingTop: '67px' }}
-                >
-            </Box>
-
-                <Box
-                      sx={{
-                            position: 'fixed',
-                            bottom: 0,
-                            left: 0,
-                            width: '100%',
-                            height: 120,
-                            backgroundColor: '',
-                            color: '#000000',
-                            display: 'flex',
-                            alignItems: 'center',
-                            justifyContent: 'center',
-                            zIndex: 1000,
-                            borderBottomLeftRadius: 8,
-                            borderBottomRightRadius: 8,
-                            boxShadow: 1 }}
+                  <Box
+                        sx={{
+                              height: '100vh',
+                              display: 'flex',
+                              flexDirection: 'column',
+                              justifyContent: 'center',
+                              alignItems: 'center',
+                              paddingTop: '67px'
+                        }}
                   >
-<Box
-    sx={{
-      display: 'flex',
-      justifyContent: 'space-around',
-      width: '100%',
-      marginTop: 4,
-    }}
-  >
+                  </Box>
 
-                <Box sx={{ textAlign: 'center' }}>
-                  <div>🏠</div>
+                  <Box
+                        sx={{
+                              position: 'fixed',
+                              bottom: 140,
+                              left: 0,
+                              width: '100%',
+                              display: 'flex',
+                              justifyContent: 'space-between',
+                              paddingX: 0,
+                              zIndex: 1200
+                    }}
+                  >
+
+                                                        {/* First Option */}
+                    <Box
+                          sx={{
+                                width: '40%',
+                                backgroundColor: '#ffffff',
+                                borderRadius: 3,
+                                padding: 1,
+                                boxShadow: 2,
+                                display: 'flex',
+                                flexDirection: 'column',
+                                marginLeft: 2,
+                                marginBottom: 2,
+                                marginRight: 'auto'
+
+                          }}
+                    >
+
+                    <Box
+                        sx={{
+                            width: '100%',
+                            display: 'flex',
+                            justifyContent: 'center'
+                        }}
+                      >
+                      <img
+                        src="/Images/BigMac.png"
+                        alt="item"
+                        style={{
+                        width: '70%',
+                        borderRadius: 8
+                      }}
+                    />
+
+                   </Box>
+                        <Box sx={{ marginTop: 1 }}>
+                            <h4 style={{ margin: 0, textAlign: 'left', padding: 4}}>BigMac</h4>
+                        </Box>
+                            <h5 style={{ margin: 0, textAlign: 'left', padding: 4 }}>509 kcal</h5>
+                            <h4 style={{ margin: 0, textAlign: 'right', marginTop: -20}}>€8.00</h4>
+                        </Box>
+                                                        {/* End of First Option */}
+
+                                                        {/* Second Option */}
+                  <Box
+                    sx={{
+                          width: '40%',
+                          backgroundColor: '#ffffff',
+                          borderRadius: 3,
+                          padding: 1,
+                          boxShadow: 2,
+                          display: 'flex',
+                          flexDirection: 'column',
+                          marginLeft: 2,
+                          marginBottom: 2,
+                          marginRight: 'auto'
+                    }}
+                  >
+
+                    <Box
+                        sx={{
+                            width: '100%',
+                            display: 'flex',
+                            justifyContent: 'center'
+                        }}
+                      >
+                      <img
+                        src="/Images/McPlant.png"
+                        alt="item"
+                        style={{
+                        width: '70%',
+                        borderRadius: 8
+                      }}
+                    />
+
+                   </Box>
+                        <Box sx={{ marginTop: 1 }}>
+                            <h4 style={{ margin: 0, textAlign: 'left', padding: 4}}>McPlant</h4>
+                        </Box>
+                            <h5 style={{ margin: 0, textAlign: 'left', padding: 4 }}>426 kcal</h5>
+                            <h4 style={{ margin: 0, textAlign: 'right', marginTop: -20}}>€0.50</h4>
+                        </Box>
+                        </Box>
+                                                        {/* End of Second Option */}
+
+                  <Box
+                        sx={{
+                              position: 'fixed',
+                              bottom: 0,
+                              left: 0,
+                              width: '100%',
+                              height: 120,
+                              backgroundColor: '',
+                              color: '#000000',
+                              display: 'flex',
+                              alignItems: 'center',
+                              justifyContent: 'center',
+                              zIndex: 1000,
+                              borderBottomLeftRadius: 8,
+                              borderBottomRightRadius: 8,
+                              boxShadow: 1
+                        }}
+                  >
+
+                <Box
+                    sx={{
+                        display: 'flex',
+                        justifyContent: 'space-around',
+                        width: '100%',
+                        marginTop: 4,
+                      }}
+                >
+
+                      <Box sx={{ textAlign: 'center' }}>
+                        <div>🏠</div>
+                      </Box>
+
+                      <Box sx={{ textAlign: 'center' }}>
+                        <div>🔍</div>
+                      </Box>
+
+                      <Box sx={{ textAlign: 'center' }}>
+                        <div>🛒</div>
+                      </Box>
+
+                      <Box sx={{ textAlign: 'center' }}>
+                        <div><a href="/">👤</a></div>
+                      </Box>
+
                 </Box>
-                <Box sx={{ textAlign: 'center' }}>
-                  <div>🔍</div>
-                </Box>
-                <Box sx={{ textAlign: 'center' }}>
-                  <div>🛒</div>
-                </Box>
-                <Box sx={{ textAlign: 'center' }}>
-                  <div><a href = "/">👤</a></div>
-                </Box>
-              </Box>
             </Box>
         </Container>
     ); // end return
