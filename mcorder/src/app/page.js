@@ -10,8 +10,6 @@
 
     import FormControlLabel from '@mui/material/FormControlLabel';
 
-    import Checkbox from '@mui/material/Checkbox';
-
     import Link from '@mui/material/Link';
 
     import Container from '@mui/material/Container';

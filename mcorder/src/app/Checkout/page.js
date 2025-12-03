@@ -1,66 +1,52 @@
-import Image from "next/image";
-import styles from "./page.module.css";
+'use client';
 
-export default function Home() {
+import * as React from 'react';
+import Box from '@mui/material/Box';
+import BottomNavigation from '@mui/material/BottomNavigation';
+import BottomNavigationAction from '@mui/material/BottomNavigationAction';
+import HomeRoundedIcon from '@mui/icons-material/HomeRounded';
+import SearchRoundedIcon from '@mui/icons-material/SearchRounded';
+import FavoriteBorderRoundedIcon from '@mui/icons-material/FavoriteBorderRounded';
+import PersonOutlineRoundedIcon from '@mui/icons-material/PersonOutlineRounded';
+
+export default function CheckoutPage() {
+  const [value, setValue] = React.useState(0);
+
   return (
-    <div className={styles.page}>
-      <main className={styles.main}>
-        <Image
-          className={styles.logo}
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className={styles.intro}>
-          <h1>To get started, edit the page.js file.</h1>
-          <p>
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
-        </div>
-        <div className={styles.ctas}>
-          <a
-            className={styles.primary}
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className={styles.logo}
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className={styles.secondary}
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
-        </div>
-      </main>
-    </div>
+    <>
+      {/* Nav Bar */}
+      <Box
+        sx={{
+          position: 'fixed',   // Fix at bottom
+          bottom: 0,
+          left: 0,
+          width: '100%',
+          height: 60,
+          backgroundColor: '#4caf50',
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+          zIndex: 1000,
+          boxShadow: 1,
+          borderTopLeftRadius: 8,
+          borderTopRightRadius: 8,
+        }}
+      >
+        <BottomNavigation
+          showLabels
+          value={value}
+          onChange={(event, newValue) => setValue(newValue)}
+          sx={{
+            width: '100%',
+            height: '100%',
+          }}
+        >
+          <BottomNavigationAction icon={<HomeRoundedIcon />} sx={{ '&.Mui-selected': { color: '#4caf50' } }} />
+          <BottomNavigationAction icon={<SearchRoundedIcon />} sx={{ '&.Mui-selected': { color: '#4caf50' } }} />
+          <BottomNavigationAction icon={<FavoriteBorderRoundedIcon />} sx={{ '&.Mui-selected': { color: '#4caf50' } }} />
+          <BottomNavigationAction icon={<PersonOutlineRoundedIcon />} sx={{ '&.Mui-selected': { color: '#4caf50' } }} />
+        </BottomNavigation>
+      </Box>
+    </>
   );
 }

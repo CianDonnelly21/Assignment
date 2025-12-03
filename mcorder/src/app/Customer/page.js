@@ -1,229 +1,83 @@
 'use client';
 
-    import * as React from 'react';
+import * as React from 'react';
+import Box from '@mui/material/Box';
+import BottomNavigation from '@mui/material/BottomNavigation';
+import BottomNavigationAction from '@mui/material/BottomNavigationAction';
+import HomeRoundedIcon from '@mui/icons-material/HomeRounded';
+import SearchRoundedIcon from '@mui/icons-material/SearchRounded';
+import FavoriteBorderRoundedIcon from '@mui/icons-material/FavoriteBorderRounded';
+import PersonOutlineRoundedIcon from '@mui/icons-material/PersonOutlineRounded';
+import { styled } from '@mui/material/styles';
+import Grid from '@mui/material/Grid';
+import Paper from '@mui/material/Paper';
 
-    import Avatar from '@mui/material/Avatar';
+export default function SimpleBottomNavigation() {
+  const [value, setValue] = React.useState(0);
 
-    import Button from '@mui/material/Button';
+  const Item = styled(Paper)(({ theme }) => ({
+    backgroundColor: '#fff',
+    height: '100%',
+    ...theme.typography.body2,
+    padding: theme.spacing(2),
+    textAlign: 'center',
+    color: (theme.vars ?? theme).palette.text.secondary,
+  }));
 
-    import TextField from '@mui/material/TextField';
+                                                                        {/* Order Items */}
 
-    import FormControlLabel from '@mui/material/FormControlLabel';
+  return (
 
-    import Checkbox from '@mui/material/Checkbox';
+    <Box sx={{ height: '100vh', display: 'flex', flexDirection: 'column', justifyContent: 'flex-end' }}>
+      {/* Content fills the remaining space */}
+      <Box sx={{ paddingBottom: '70px', paddingX: 2}}>
+        <Grid container spacing={10} justifyContent="center" alignItems="center" >
+          <Grid item xs={6}><Item>1</Item></Grid>
+          <Grid item xs={6}><Item>2</Item></Grid>
+        </Grid>
 
-    import Link from '@mui/material/Link';
-
-    import Container from '@mui/material/Container';
-
-    import Box from '@mui/material/Box';
-
-
-
-    export default function Home() {
-
-    const handleSubmit = (event) => {
-        console.log("handling submit");
-        event.preventDefault();
-
-
-    const data = new FormData(event.currentTarget);
-        let firstName = data.get('firstName')
-        let lastName = data.get('lastName')
-        let email = data.get('email')
-        let address1 = data.get('address1')
-        let address2 = data.get('address2')
-        let address3 = data.get('address3')
-        let password = data.get('password')
-        let confirmPassword = data.get('confirmPassword')
-
-        console.log("Sent First Name: " + firstName)
-        console.log("Sent Last Name: " + lastName)
-        console.log("Sent Email:" + email)
-        console.log("Sent Address Line 1: " + address1)
-        console.log("Sent Address Line 2: " + address2)
-        console.log("Sent Address Line 3: " + address3)
-        console.log("Sent Password:" + password)
-        console.log("Sent Confirm Password: " + confirmPassword)
+        <Grid container spacing={10} justifyContent="center" alignItems="center" >
+          <Grid item xs={6}><Item>3</Item></Grid>
+          <Grid item xs={6}><Item>4</Item></Grid>
+        </Grid>
+      </Box>
 
 
-        runDBCallAsync(`http://localhost:3000/api/Login?firstName=${firstName}&lastName=${lastName}&email=${email}&address1=${address1}&address2=${address2}&address3=${address3}&password=${password}&confirmPassword=${confirmPassword}`)
-        }; // end handle submit
+                                                                         {/* Nav Bar */}
+
+        <Box
+            sx={{
+                top: 0,
+                left: 0,
+                width: '100%',
+                height: 60,
+                backgroundColor: '',
+                color: '#000000',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                zIndex: 1000,
+                borderBottomLeftRadius: 8,
+                borderBottomRightRadius: 8,
+                boxShadow: 1
+            }}
+        >
 
 
-        async function runDBCallAsync(url) {
-            const res = await fetch(url);
-            const data = await res.json();
-
-                if(data.data== "valid"){
-                console.log("login is valid!")
-                }
-                else {
-                    console.log("not valid  ")
-                    }
-                }
-
-
-            return (
-
-
-                <Container maxWidth="sm">
-
-                  <Box
-                        sx={{
-                              height: '100vh',
-                              display: 'flex',
-                              flexDirection: 'column',
-                              justifyContent: 'center',
-                              alignItems: 'center',
-                              paddingTop: '67px'
-                        }}
-                  >
-                  </Box>
-
-                  <Box
-                        sx={{
-                              position: 'fixed',
-                              bottom: 140,
-                              left: 0,
-                              width: '100%',
-                              display: 'flex',
-                              justifyContent: 'space-between',
-                              paddingX: 0,
-                              zIndex: 1200
-                    }}
-                  >
-
-                                                        {/* First Option */}
-                    <Box
-                          sx={{
-                                width: '40%',
-                                backgroundColor: '#ffffff',
-                                borderRadius: 3,
-                                padding: 1,
-                                boxShadow: 2,
-                                display: 'flex',
-                                flexDirection: 'column',
-                                marginLeft: 2,
-                                marginBottom: 2,
-                                marginRight: 'auto'
-
-                          }}
-                    >
-
-                    <Box
-                        sx={{
-                            width: '100%',
-                            display: 'flex',
-                            justifyContent: 'center'
-                        }}
-                      >
-                      <img
-                        src="/Images/BigMac.png"
-                        alt="item"
-                        style={{
-                        width: '70%',
-                        borderRadius: 8
-                      }}
-                    />
-
-                   </Box>
-                        <Box sx={{ marginTop: 1 }}>
-                            <h4 style={{ margin: 0, textAlign: 'left', padding: 4}}>BigMac</h4>
-                        </Box>
-                            <h5 style={{ margin: 0, textAlign: 'left', padding: 4 }}>509 kcal</h5>
-                            <h4 style={{ margin: 0, textAlign: 'right', marginTop: -20}}>€8.00</h4>
-                        </Box>
-                                                        {/* End of First Option */}
-
-                                                        {/* Second Option */}
-                  <Box
-                    sx={{
-                          width: '40%',
-                          backgroundColor: '#ffffff',
-                          borderRadius: 3,
-                          padding: 1,
-                          boxShadow: 2,
-                          display: 'flex',
-                          flexDirection: 'column',
-                          marginLeft: 2,
-                          marginBottom: 2,
-                          marginRight: 'auto'
-                    }}
-                  >
-
-                    <Box
-                        sx={{
-                            width: '100%',
-                            display: 'flex',
-                            justifyContent: 'center'
-                        }}
-                      >
-                      <img
-                        src="/Images/McPlant.png"
-                        alt="item"
-                        style={{
-                        width: '70%',
-                        borderRadius: 8
-                      }}
-                    />
-
-                   </Box>
-                        <Box sx={{ marginTop: 1 }}>
-                            <h4 style={{ margin: 0, textAlign: 'left', padding: 4}}>McPlant</h4>
-                        </Box>
-                            <h5 style={{ margin: 0, textAlign: 'left', padding: 4 }}>426 kcal</h5>
-                            <h4 style={{ margin: 0, textAlign: 'right', marginTop: -20}}>€0.50</h4>
-                        </Box>
-                        </Box>
-                                                        {/* End of Second Option */}
-
-                  <Box
-                        sx={{
-                              position: 'fixed',
-                              bottom: 0,
-                              left: 0,
-                              width: '100%',
-                              height: 120,
-                              backgroundColor: '',
-                              color: '#000000',
-                              display: 'flex',
-                              alignItems: 'center',
-                              justifyContent: 'center',
-                              zIndex: 1000,
-                              borderBottomLeftRadius: 8,
-                              borderBottomRightRadius: 8,
-                              boxShadow: 1
-                        }}
-                  >
-
-                <Box
-                    sx={{
-                        display: 'flex',
-                        justifyContent: 'space-around',
-                        width: '100%',
-                        marginTop: 4,
-                      }}
-                >
-
-                      <Box sx={{ textAlign: 'center' }}>
-                        <div>🏠</div>
-                      </Box>
-
-                      <Box sx={{ textAlign: 'center' }}>
-                        <div>🔍</div>
-                      </Box>
-
-                      <Box sx={{ textAlign: 'center' }}>
-                        <div>🛒</div>
-                      </Box>
-
-                      <Box sx={{ textAlign: 'center' }}>
-                        <div><a href="/">👤</a></div>
-                      </Box>
-
-                </Box>
-            </Box>
-        </Container>
-    ); // end return
+      <Box sx={{ height: 60 }}>
+        <BottomNavigation
+          showLabels
+          value={value}
+          onChange={(event, newValue) => setValue(newValue)}
+          sx={{ width: '100%', height: '100%' }}
+        >
+          <BottomNavigationAction icon={<HomeRoundedIcon />} sx={{ '&.Mui-selected': { color: '#4caf50' } }} />
+          <BottomNavigationAction icon={<SearchRoundedIcon />} sx={{ '&.Mui-selected': { color: '#4caf50' } }} />
+          <BottomNavigationAction icon={<FavoriteBorderRoundedIcon />} sx={{ '&.Mui-selected': { color: '#4caf50' } }} />
+          <BottomNavigationAction icon={<PersonOutlineRoundedIcon />} sx={{ '&.Mui-selected': { color: '#4caf50' } }} />
+        </BottomNavigation>
+      </Box>
+     </Box>
+    </Box>
+  );
 }
