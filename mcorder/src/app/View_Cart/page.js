@@ -6,14 +6,13 @@ import BottomNavigation from '@mui/material/BottomNavigation';
 import BottomNavigationAction from '@mui/material/BottomNavigationAction';
 import HomeRoundedIcon from '@mui/icons-material/HomeRounded';
 import SearchRoundedIcon from '@mui/icons-material/SearchRounded';
-import FavoriteBorderRoundedIcon from '@mui/icons-material/FavoriteBorderRounded';
+import ShoppingBasketRoundedIcon from '@mui/icons-material/ShoppingBasketRounded';
 import PersonOutlineRoundedIcon from '@mui/icons-material/PersonOutlineRounded';
 import { usePathname } from 'next/navigation';
 
 
 export default function CheckoutPage() {
   const [value, setValue] = React.useState(0);
-
 
   return (
     <>
@@ -35,15 +34,15 @@ export default function CheckoutPage() {
           borderTopRightRadius: 8,
         }}
       >
-
         <BottomNavigation
-          value={-1}
+          value={2}
           onChange={(event, newValue) => setValue(newValue)}
           sx={{
             width: '100%',
             height: '100%',
           }}
         >
+
 
         <BottomNavigationAction
             icon={<HomeRoundedIcon />}
