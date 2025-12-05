@@ -5,10 +5,13 @@ import Box from '@mui/material/Box';
 import BottomNavigation from '@mui/material/BottomNavigation';
 import BottomNavigationAction from '@mui/material/BottomNavigationAction';
 import HomeRoundedIcon from '@mui/icons-material/HomeRounded';
-import SearchRoundedIcon from '@mui/icons-material/SearchRounded';
+import MapRoundedIcon from '@mui/icons-material/MapRounded';
 import ShoppingBasketRoundedIcon from '@mui/icons-material/ShoppingBasketRounded';
 import PersonOutlineRoundedIcon from '@mui/icons-material/PersonOutlineRounded';
 import { usePathname } from 'next/navigation';
+import NightsStayRoundedIcon from '@mui/icons-material/NightsStayRounded';
+import ShoppingCartRoundedIcon from '@mui/icons-material/ShoppingCartRounded';
+import IconButton from '@mui/material/IconButton';
 
 
 export default function CheckoutPage() {
@@ -52,7 +55,7 @@ export default function CheckoutPage() {
           />
 
           <BottomNavigationAction
-            icon={<SearchRoundedIcon />}
+            icon={<MapRoundedIcon />}
             component="a"
             href="/"
             sx={{ '&.Mui-selected': { color: '#4caf50' } }}

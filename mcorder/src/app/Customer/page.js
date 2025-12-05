@@ -5,7 +5,7 @@ import Box from '@mui/material/Box';
 import BottomNavigation from '@mui/material/BottomNavigation';
 import BottomNavigationAction from '@mui/material/BottomNavigationAction';
 import HomeRoundedIcon from '@mui/icons-material/HomeRounded';
-import SearchRoundedIcon from '@mui/icons-material/SearchRounded';
+import MapRoundedIcon from '@mui/icons-material/MapRounded';
 import ShoppingBasketRoundedIcon from '@mui/icons-material/ShoppingBasketRounded';
 import PersonOutlineRoundedIcon from '@mui/icons-material/PersonOutlineRounded';
 import { styled } from '@mui/material/styles';
@@ -13,6 +13,9 @@ import Grid from '@mui/material/Grid';
 import Paper from '@mui/material/Paper';
 import Button from '@mui/material/Button';
 import Stack from '@mui/material/Stack';
+import NightsStayRoundedIcon from '@mui/icons-material/NightsStayRounded';
+import ShoppingCartRoundedIcon from '@mui/icons-material/ShoppingCartRounded';
+import IconButton from '@mui/material/IconButton';
 
 
 export default function SimpleBottomNavigation() {
@@ -32,7 +35,62 @@ export default function SimpleBottomNavigation() {
 
   return (
     <>
-        <Box sx={{ display: 'flex', justifyContent: 'center', marginTop: '35%', opacity: 0.5 }}>
+
+        <Box
+            sx={{
+                height: '0vh',
+                display: 'flex',
+                flexDirection: 'column',
+                justifyContent: 'center',
+                alignItems: 'center',
+                paddingTop: '-10%'
+            }}
+        >
+
+        <Box
+              sx={{
+                    position: 'fixed',
+                    top: 0,
+                    left: 0,
+                    width: '100%',
+                    height: 60,
+                    backgroundColor: '',
+                    color: '#000000',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    zIndex: 1000,
+                    borderBottomLeftRadius: 8,
+                    borderBottomRightRadius: 8,
+                    boxShadow: 1,
+                    justifyContent: 'space-between',
+                }}
+          >
+
+              <IconButton
+                component="a"
+                href = "Checkout/"
+                sx={{ '&:hover': { color: '#4caf50' } }}
+              >
+                <ShoppingCartRoundedIcon />
+              </IconButton>
+
+                <h3 sx = {{ justifyContent: 'center' }}> McOrder </h3>
+
+              <IconButton
+                component="a"
+                href="https://www.met.ie/"
+                sx={{
+                    '&:hover': { color: '#4caf50' }
+                }}
+              >
+                <NightsStayRoundedIcon />
+            </IconButton>
+
+                </Box>
+            </Box>
+
+        <Box sx={{ display: 'flex', justifyContent: 'center', marginTop: '20%', opacity: 0.5 }}>
             <img
                 src="/Images/McDonalds_Animated.png"
                 alt="McOrder"
@@ -52,7 +110,7 @@ export default function SimpleBottomNavigation() {
 
                                                             {/* Order Items */}
 
-    <Box sx={{ height: '100vh', display: 'flex', flexDirection: 'column', justifyContent: 'center', paddingLeft: '2%', marginTop: '-80%'}}>
+    <Box sx={{ height: '100vh', display: 'flex', flexDirection: 'column', justifyContent: 'center', paddingLeft: '2%', marginTop: '10%'}}>
       <Box sx={{ marginTop: '20%'}}>
         <Grid container rowSpacing={10} columnSpacing={{ xs: 20, sm: 12, md: 6 }} >
           <Grid item xs={6}><Item>1</Item></Grid>
@@ -104,7 +162,7 @@ export default function SimpleBottomNavigation() {
           />
 
           <BottomNavigationAction
-            icon={<SearchRoundedIcon />}
+            icon={<MapRoundedIcon />}
             component="a"
             href="/"
             sx={{ '&.Mui-selected': { color: '#4caf50' } }}
