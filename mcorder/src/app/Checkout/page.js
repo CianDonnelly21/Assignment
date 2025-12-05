@@ -19,6 +19,56 @@ export default function CheckoutPage() {
 
   return (
     <>
+<Box
+            sx={{
+                height: '0vh',
+                display: 'flex',
+                flexDirection: 'column',
+                justifyContent: 'center',
+                alignItems: 'center',
+                paddingTop: '-10%'
+            }}
+        >
+
+        <Box
+              sx={{
+                    position: 'fixed',
+                    top: 0,
+                    left: 0,
+                    width: '100%',
+                    height: 60,
+                    backgroundColor: '',
+                    color: '#000000',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    zIndex: 1000,
+                    borderBottomLeftRadius: 8,
+                    borderBottomRightRadius: 8,
+                    boxShadow: 1,
+                    justifyContent: 'space-between',
+                }}
+          >
+
+              <IconButton
+                component="a"
+                href = "Checkout/"
+                sx={{ '&:hover': { color: '#4caf50' } }}
+              >
+                <ShoppingCartRoundedIcon />
+              </IconButton>
+
+                <h3 sx = {{ justifyContent: 'center' }}> McOrder </h3>
+
+              <IconButton
+                component="a"
+                href="https://www.met.ie/"
+                sx={{
+                    '&:hover': { color: '#4caf50' }
+                }}
+              >
+                <NightsStayRoundedIcon />
+            </IconButton>
       {/* Nav Bar */}
       <Box
         sx={{

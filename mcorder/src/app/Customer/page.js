@@ -16,25 +16,85 @@ import Stack from '@mui/material/Stack';
 import NightsStayRoundedIcon from '@mui/icons-material/NightsStayRounded';
 import ShoppingCartRoundedIcon from '@mui/icons-material/ShoppingCartRounded';
 import IconButton from '@mui/material/IconButton';
+import { useRouter } from 'next/navigation';
 
 
-export default function SimpleBottomNavigation() {
-  const [value, setValue] = React.useState(0);
+export default function CustomerPage() {
+  const router = useRouter();
+
 
   const Item = styled(Paper)(({ theme }) => ({
     backgroundColor: '#fff',
-    height: '200%',
-    width: '240%',
-    ...theme.typography.body2,
-    padding: theme.spacing(3),
+    height: '110%',
+    width: '120%',
+    overflow: 'hidden',
     textAlign: 'center',
     color: (theme.vars ?? theme).palette.text.secondary,
   }));
+
+const [showConfirmation, setShowConfirmation] = React.useState(false);
+
+const handleProductClick = (product) => {
+  const existingCart = JSON.parse(localStorage.getItem('cart')) || [];
+
+  // Only add if not already in cart
+  const isInCart = existingCart.some(item => item.name === product.name);
+  if (!isInCart) {
+    const newCart = [...existingCart, product];
+    localStorage.setItem('cart', JSON.stringify(newCart));
+  }
+
+  setShowConfirmation(true);
+  setTimeout(() => setShowConfirmation(false), 2000);
+};
+
+
+
+
+  const burgers = [
+    { name: "Big Mac", price: 8, kcal: 509, image: "/Images/BigMac.png" },
+    { name: "Q. Pounder", price: 6, kcal: 749, image: "/Images/DoubleQuarterPounder.png" },
+    { name: "Mc Spicy", price: 5, kcal: 454, image: "/Images/McSpicy.png" },
+    { name: "Mc Plant", price: 8, kcal: 426, image: "/Images/McPlant.png" }
+  ];
+
+  const dessert = [
+    { name: "Oreo", price: 2.3, kcal: 260, image: "/Images/Oreo.png" },
+    { name: "Smarties", price: 2.6, kcal: 273, image: "/Images/Smarties.png" },
+    { name: "Brownie", price: 3.8, kcal: 278, image: "/Images/Brownie.png" },
+    { name: "Donut", price: 3, kcal: 197, image: "/Images/Donut.png" }
+  ];
+
+  const drinks = [
+    { name: "Coca Cola", price: 1, kcal: 1, image: "/Images/Coke.png" },
+    { name: "Lemonade", price: 3.7, kcal: 105, image: "/Images/Lemonade.png" },
+    { name: "Frappucino", price: 4.2, kcal: 319, image: "/Images/Frappucino.png" },
+    { name: "Diet Coke", price: 1.5, kcal: 1, image: "/Images/DietCoke.png" }
+  ];
+
+  const [products, setProducts] = React.useState(burgers);
+
 
 
 
   return (
     <>
+
+        {showConfirmation && (
+          <Box sx={{
+            position: 'fixed',
+            top: 70,
+            left: '50%',
+            transform: 'translateX(-50%)',
+            backgroundColor: '#4caf50',
+            color: 'white',
+            padding: '10px 20px',
+            borderRadius: 4,
+            zIndex: 2000,
+          }}>
+            Product added to cart!
+          </Box>
+        )}
 
         <Box
             sx={{
@@ -103,33 +163,42 @@ export default function SimpleBottomNavigation() {
                                                             {/* Buttons */}
 
       <Stack direction="row" spacing={2} sx={{ padding: 2, zIndex: 1000, backgroundColor: '#fff', justifyContent: 'center', marginTop: '5%', marginBottom: '-85%' }}>
-        <Button variant="contained" sx={{ backgroundColor: '#ffff', color: 'darkgrey', '&:hover': { backgroundColor: 'yellow', color: 'red'}, width: '32%' }}> Contained </Button>
-        <Button variant="contained" sx={{ backgroundColor: '#ffff', color: 'darkgrey', '&:hover': { backgroundColor: 'yellow', color: 'red'}, width: '32%'}}> Disabled </Button>
-        <Button variant="contained" sx={{ backgroundColor: '#ffff', color: 'darkgrey', '&:hover': { backgroundColor: 'yellow', color: 'red'}, width: '32%'}}> Link </Button>
+        <Button variant="contained" onClick={() => setProducts(burgers)} sx={{ backgroundColor: '#ffff', color: 'darkgrey', '&:hover': { backgroundColor: 'yellow', color: 'red'}, width: '32%' }}> McBurgers </Button>
+        <Button variant="contained" onClick={() => setProducts(dessert)} sx={{ backgroundColor: '#ffff', color: 'darkgrey', '&:hover': { backgroundColor: 'yellow', color: 'red'}, width: '32%'}}> McFlurrys </Button>
+        <Button variant="contained" onClick={() => setProducts(drinks)} sx={{ backgroundColor: '#ffff', color: 'darkgrey', '&:hover': { backgroundColor: 'yellow', color: 'red'}, width: '32%'}}> McDrinks </Button>
       </Stack>
 
-                                                            {/* Order Items */}
 
-    <Box sx={{ height: '100vh', display: 'flex', flexDirection: 'column', justifyContent: 'center', paddingLeft: '2%', marginTop: '10%'}}>
-      <Box sx={{ marginTop: '20%'}}>
-        <Grid container rowSpacing={10} columnSpacing={{ xs: 20, sm: 12, md: 6 }} >
-          <Grid item xs={6}><Item>1</Item></Grid>
-          <Grid item xs={6}><Item>2</Item></Grid>
-        </Grid>
-      </Box>
+    {/* Product grid */}
+    <Box sx={{ paddingLeft: '1.3%', marginTop: '90%', width: '90%', justifyContent: 'center' }}>
+      <Grid container spacing={10}>
+        {products.map((product, index) => (
+          <Grid item xs={6} key={index}>
+                        <Item onClick={() => handleProductClick(product)} sx={{ cursor: 'pointer' }}>
 
-      <Box sx={{ marginTop: '40%' }}>
-        <Grid container rowSpacing={100} columnSpacing={{ xs: 20, sm: 0, md: 3 }} >
-          <Grid item xs={6}><Item>3</Item></Grid>
-          <Grid item xs={6}><Item>4</Item></Grid>
-        </Grid>
-      </Box>
+          <img src={product.image} alt={product.name} style={{ width: '140px', height: '120px', objectFit: 'contain' }} />
+
+          {/* Name + price */}
+          <Box sx={{ display: 'flex', justifyContent: 'space-between', width: '100%', paddingX: 1, marginTop: '8px' }}>
+            <span style={{ fontWeight: 'bold' }}>{product.name}</span>
+            <span style={{ fontWeight: 'bold', marginRight: '20px' }}>€{product.price.toFixed(2)}</span>
+          </Box>
+
+          {/* Kcal */}
+          <Box sx={{ textAlign: 'left', width: '100%', paddingLeft: 1, marginTop: '4px', color: 'gray', fontSize: '0.85rem' }}>
+            {product.kcal} kcal
+          </Box>
+        </Item>
+      </Grid>
+    ))}
+  </Grid>
+
 
                                                                          {/* Nav Bar */}
 
       <Box
         sx={{
-          position: 'fixed',   // Fix at bottom
+          position: 'fixed',
           bottom: 0,
           left: 0,
           width: '100%',
