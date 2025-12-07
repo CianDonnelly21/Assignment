@@ -31,11 +31,10 @@ export default function ManagerDashboard() {
         <Table>
           <TableHead>
             <TableRow>
-              <TableCell>Order ID</TableCell>
-              <TableCell>Customer Email</TableCell>
+              <TableCell>ID</TableCell>
+              <TableCell>Email</TableCell>
               <TableCell>Products</TableCell>
               <TableCell>Total (€)</TableCell>
-              <TableCell>Date</TableCell>
             </TableRow>
           </TableHead>
 
@@ -48,7 +47,6 @@ export default function ManagerDashboard() {
                   {order.items.map(item => item.name + ' x' + item.quantity).join(', ')}
                 </TableCell>
                 <TableCell>{order.total.toFixed(2)}</TableCell>
-                <TableCell>{new Date(order.date).toLocaleString()}</TableCell>
               </TableRow>
             ))}
           </TableBody>
