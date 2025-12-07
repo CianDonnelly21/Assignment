@@ -15,17 +15,10 @@ export default function ManagerDashboard() {
   const [orders, setOrders] = React.useState([]);
 
   React.useEffect(() => {
-    const fetchOrders = async () => {
-      try {
-        const res = await fetch('/api/orders');
-        const data = await res.json();
-        if (data.orders) setOrders(data.orders);
-      } catch (err) {
-        console.error('Error fetching orders:', err);
-      }
-    };
-
-    fetchOrders();
+    fetch('/api/Manager')
+      .then(res => res.json())
+      .then(data => setOrders(data.orders || []))
+      .catch(err => console.error('Failed to fetch orders:', err));
   }, []);
 
   return (
@@ -38,22 +31,24 @@ export default function ManagerDashboard() {
         <Table>
           <TableHead>
             <TableRow>
-              <TableCell>ID</TableCell>
-              <TableCell>Email</TableCell>
+              <TableCell>Order ID</TableCell>
+              <TableCell>Customer Email</TableCell>
               <TableCell>Products</TableCell>
               <TableCell>Total (€)</TableCell>
+              <TableCell>Date</TableCell>
             </TableRow>
           </TableHead>
 
           <TableBody>
-            {orders.map((order) => (
+            {orders.map(order => (
               <TableRow key={order._id}>
                 <TableCell>{order._id}</TableCell>
                 <TableCell>{order.customerEmail}</TableCell>
                 <TableCell>
-                  {order.items.map(item => `${item.name} x${item.quantity}`).join(', ')}
+                  {order.items.map(item => item.name + ' x' + item.quantity).join(', ')}
                 </TableCell>
                 <TableCell>{order.total.toFixed(2)}</TableCell>
+                <TableCell>{new Date(order.date).toLocaleString()}</TableCell>
               </TableRow>
             ))}
           </TableBody>
