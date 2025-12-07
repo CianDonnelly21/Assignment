@@ -37,7 +37,7 @@ const [showConfirmation, setShowConfirmation] = React.useState(false);
 const handleProductClick = (product) => {
   const existingCart = JSON.parse(localStorage.getItem('cart')) || [];
 
-  // Only add if not already in cart
+  {/* Only add if not already in cart */}
   const isInCart = existingCart.some(item => item.name === product.name);
   if (!isInCart) {
     const newCart = [...existingCart, product];
@@ -59,17 +59,17 @@ const handleProductClick = (product) => {
   ];
 
   const dessert = [
-    { name: "Oreo", price: 2.3, kcal: 260, image: "/Images/Oreo.png" },
-    { name: "Smarties", price: 2.6, kcal: 273, image: "/Images/Smarties.png" },
-    { name: "Brownie", price: 3.8, kcal: 278, image: "/Images/Brownie.png" },
+    { name: "Oreo", price: 2.30, kcal: 260, image: "/Images/Oreo.png" },
+    { name: "Smarties", price: 2.60, kcal: 273, image: "/Images/Smarties.png" },
+    { name: "Brownie", price: 3.80, kcal: 278, image: "/Images/Brownie.png" },
     { name: "Donut", price: 3, kcal: 197, image: "/Images/Donut.png" }
   ];
 
   const drinks = [
     { name: "Coca Cola", price: 1, kcal: 1, image: "/Images/Coke.png" },
-    { name: "Lemonade", price: 3.7, kcal: 105, image: "/Images/Lemonade.png" },
-    { name: "Frappucino", price: 4.2, kcal: 319, image: "/Images/Frappucino.png" },
-    { name: "Diet Coke", price: 1.5, kcal: 1, image: "/Images/DietCoke.png" }
+    { name: "Lemonade", price: 3.70, kcal: 105, image: "/Images/Lemonade.png" },
+    { name: "Frappucino", price: 4.20, kcal: 319, image: "/Images/Frappucino.png" },
+    { name: "Diet Coke", price: 1.50, kcal: 1, image: "/Images/DietCoke.png" }
   ];
 
   const [products, setProducts] = React.useState(burgers);

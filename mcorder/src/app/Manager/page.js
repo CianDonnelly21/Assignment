@@ -1,66 +1,78 @@
-import Image from "next/image";
-import styles from "./page.module.css";
+'use client';
 
-export default function Home() {
+import * as React from 'react';
+import Box from '@mui/material/Box';
+import Typography from '@mui/material/Typography';
+import Table from '@mui/material/Table';
+import TableBody from '@mui/material/TableBody';
+import TableCell from '@mui/material/TableCell';
+import TableContainer from '@mui/material/TableContainer';
+import TableHead from '@mui/material/TableHead';
+import TableRow from '@mui/material/TableRow';
+import Paper from '@mui/material/Paper';
+
+export default function ManagerDashboard() {
+  // Dummy orders data
+  var [orders, setOrders] = React.useState([
+    {
+      _id: '1',
+      customerEmail: 'john@example.com',
+      items: [
+        { name: 'Big Mac', quantity: 2 },
+        { name: 'Fries', quantity: 1 }
+      ],
+      total: 12.50,
+      date: '2025-12-06T12:34:00Z'
+    },
+    {
+      _id: '2',
+      customerEmail: 'jane@example.com',
+      items: [
+        { name: 'McNuggets', quantity: 1 },
+        { name: 'Coke', quantity: 2 }
+      ],
+      total: 8.75,
+      date: '2025-12-06T13:10:00Z'
+    }
+  ]);
+
   return (
-    <div className={styles.page}>
-      <main className={styles.main}>
-        <Image
-          className={styles.logo}
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className={styles.intro}>
-          <h1>To get started, edit the page.js file.</h1>
-          <p>
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
-        </div>
-        <div className={styles.ctas}>
-          <a
-            className={styles.primary}
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className={styles.logo}
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className={styles.secondary}
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
-        </div>
-      </main>
-    </div>
+    <Box sx={{ px: 2, py: 5 }}>
+      <Typography variant="h4" sx={{ mb: 4, textAlign: 'center' }}>
+        Manager Dashboard
+      </Typography>
+
+      <TableContainer component={Paper}>
+        <Table>
+          <TableHead>
+            <TableRow>
+              <TableCell>Order ID</TableCell>
+              <TableCell>Customer Email</TableCell>
+              <TableCell>Products</TableCell>
+              <TableCell>Total (€)</TableCell>
+              <TableCell>Date</TableCell>
+            </TableRow>
+          </TableHead>
+
+          <TableBody>
+            {orders.map(function(order) {
+              return (
+                <TableRow key={order._id}>
+                  <TableCell>{order._id}</TableCell>
+                  <TableCell>{order.customerEmail}</TableCell>
+                  <TableCell>
+                    {order.items.map(function(item) {
+                      return item.name + ' x' + item.quantity + ', ';
+                    })}
+                  </TableCell>
+                  <TableCell>{order.total.toFixed(2)}</TableCell>
+                  <TableCell>{new Date(order.date).toLocaleString()}</TableCell>
+                </TableRow>
+              );
+            })}
+          </TableBody>
+        </Table>
+      </TableContainer>
+    </Box>
   );
 }

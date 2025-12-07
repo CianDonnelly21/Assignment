@@ -53,7 +53,6 @@ export default function ViewCartPage() {
           zIndex: 1000,
           borderBottomLeftRadius: 8,
           borderBottomRightRadius: 8,
-          boxShadow: 1,
           backgroundColor: '#fff',
         }}
       >
@@ -110,7 +109,36 @@ export default function ViewCartPage() {
             </Box>
           ))
         )}
+
+        {/* TOTAL + CHECKOUT BUTTON */}
+        {cart.length > 0 && (
+          <Box sx={{ marginTop: 7, textAlign: 'center' }}>
+            <h2>
+              Total: €
+              {cart
+                .reduce((sum, item) => sum + item.price * (item.quantity || 1), 0)
+                .toFixed(2)}
+            </h2>
+
+            <button
+              style={{
+                background: '#4caf50',
+                color: 'white',
+                border: 'none',
+                borderRadius: '10px',
+                fontSize: '16px',
+                cursor: 'pointer',
+                width: '100%',
+                maxWidth: '300px',
+              }}
+              onClick={() => router.push('Checkout/')}
+            >
+              <h3> Checkout </h3>
+            </button>
+          </Box>
+        )}
       </Box>
+
 
       {/* NAV BAR */}
       <Box

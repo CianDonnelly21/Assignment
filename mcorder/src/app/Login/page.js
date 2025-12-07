@@ -40,15 +40,17 @@
 
     async function runDBCallAsync(url) {
         const res = await fetch(url);
-        const data = await res.json();
+        const data = await res.json(); // <- you stored JSON here
 
-            if(data.data== "valid"){
-            console.log("login is valid!")
-            }
-            else {
-                console.log("not valid  ")
-                }
-            }
+        if (data.login) { // <- check the correct variable
+            console.log("login is valid!");
+            window.location.href = "/Customer"; // redirect only if valid
+        } else {
+            console.log("not valid");
+            alert("Invalid email or password");
+        }
+    }
+
 
 
             return (
@@ -120,17 +122,17 @@
                     autoComplete="current-password"
                 />
 
-                <Button
-                    type="submit"
-                    fullWidth
-                    variant="contained"
-                    sx={{
-                        marginTop: 3,
-                        marginBottom: 2,
-                        backgroundColor:'#4caf50' }}
-                >
-                    <a href = "Customer" style={{ textDecoration: "none", color: "inherit" }}> LOGIN </a>
-                </Button>
+   <Button
+       type="submit"
+       fullWidth
+       variant="contained"
+       sx={{
+           marginTop: 3,
+           marginBottom: 2,
+           backgroundColor:'#4caf50' }}
+   >
+       LOGIN
+   </Button>
 
                 <div
                     style = {{

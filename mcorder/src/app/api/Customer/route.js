@@ -31,7 +31,7 @@ export async function GET(req, res) {
   const { MongoClient } = require('mongodb');
 
 
-  const url = 'mongodb+srv://root:myPassword123@cluster0.vgnfxgh.mongodb.net/?retryWrites=true&w=majority';
+  const url = 'mongodb+srv://ciandonnelly81_db_user:1234@cluster0.7f1qrtd.mongodb.net/?appName=Cluster0';
 
   const client = new MongoClient(url);
 
